@@ -1,53 +1,67 @@
 package templateMethod
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type IDisplay interface {
-	Open()
-	Print()
-	Close()
+type Display interface {
+	Display()
 }
 
-type AbstractDisplay struct {
-	Inst IDisplay
+type displayAble interface {
+	open()
+	print()
+	close()
 }
 
-func (ad *AbstractDisplay) Display() {
-	if ad.Inst == nil {
+type abstractDisplay struct {
+	inst displayAble
+}
+
+func (ad *abstractDisplay) Display() {
+	if ad.inst == nil {
 		return
 	}
 
-	ad.Inst.Open()
+	ad.inst.open()
 	for i := 0; i < 5; i++ {
-		ad.Inst.Print()
+		ad.inst.print()
 	}
-	ad.Inst.Close()
+	ad.inst.close()
 }
 
-type CharDisplay struct {
-	Ch byte
+type charDisplay struct {
+	ch byte
 }
 
-func (cd *CharDisplay) Open() {
+func NewCharDisplay(b byte) Display {
+	result := &abstractDisplay{}
+	result.inst = &charDisplay{ch: b}
+	return result
+}
+
+func (cd *charDisplay) open() {
 	fmt.Print("<<")
 }
 
-func (cd *CharDisplay) Print() {
-	fmt.Print(string(cd.Ch))
+func (cd *charDisplay) print() {
+	fmt.Print(string(cd.ch))
 }
 
-func (cd *CharDisplay) Close() {
+func (cd *charDisplay) close() {
 	fmt.Println(">>")
 }
 
-type StringDisplay struct {
-	Str string
+type stringDisplay struct {
+	str string
 }
 
-func (sd *StringDisplay) printLine() {
-	length := len(sd.Str)
+func NewStringDisplay(s string) Display {
+	result := &abstractDisplay{}
+	result.inst = &stringDisplay{str: s}
+	return result
+}
+func (sd *stringDisplay) printLine() {
+	length := len(sd.str)
+
 	fmt.Print("+")
 	for i := 0; i < length; i++ {
 		fmt.Print("-")
@@ -55,14 +69,14 @@ func (sd *StringDisplay) printLine() {
 	fmt.Println("+")
 }
 
-func (sd *StringDisplay) Open() {
+func (sd *stringDisplay) open() {
 	sd.printLine()
 }
 
-func (sd *StringDisplay) Print() {
-	fmt.Println("|" + sd.Str + "|")
+func (sd *stringDisplay) print() {
+	fmt.Println("|" + sd.str + "|")
 }
 
-func (sd *StringDisplay) Close() {
+func (sd *stringDisplay) close() {
 	sd.printLine()
 }
