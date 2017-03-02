@@ -2,6 +2,7 @@ package templateMethod
 
 import "fmt"
 
+// Display 提供了Display()方法。
 type Display interface {
 	Display()
 }
@@ -32,6 +33,7 @@ type charDisplay struct {
 	ch byte
 }
 
+// NewCharDisplay 返回charDisplay的Display接口的形式
 func NewCharDisplay(b byte) Display {
 	result := &abstractDisplay{}
 	result.inst = &charDisplay{ch: b}
@@ -54,6 +56,7 @@ type stringDisplay struct {
 	str string
 }
 
+// NewStringDisplay 返回stringDisplay的Display接口形式
 func NewStringDisplay(s string) Display {
 	result := &abstractDisplay{}
 	result.inst = &stringDisplay{str: s}
