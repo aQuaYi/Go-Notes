@@ -1,5 +1,4 @@
-# Show You the Golang Code
-Talk is cheap, show you the code.
+# 算法
 
 ## 目录
 1. [排序](./sort)

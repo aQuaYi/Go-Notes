@@ -1,5 +1,5 @@
-# Show You the Golang Code
-Talk is cheap, show you the code.
+# 排序
+排序就是先比较，再交换。
 
 ## 目录
 1. [选择排序](./select)
