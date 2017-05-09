@@ -7,8 +7,8 @@ var ans1000 = []int{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 
 func Test_Prime_generate(t *testing.T) {
 	k := 100
 	c := make(chan int)
-	p := &Prime{
-		Chan:  c,
+	p := &prime{
+		ch:    c,
 		limit: k,
 	}
 	src := p.generate()
@@ -29,8 +29,8 @@ func Test_Prime_generate(t *testing.T) {
 func Test_Prime_generate_2(t *testing.T) {
 	k := 2
 	c := make(chan int)
-	p := &Prime{
-		Chan:  c,
+	p := &prime{
+		ch:    c,
 		limit: k,
 	}
 	src := p.generate()
@@ -52,8 +52,8 @@ func Test_Prime_generate_2(t *testing.T) {
 func Test_Prime_generate_1(t *testing.T) {
 	k := 1
 	c := make(chan int)
-	p := &Prime{
-		Chan:  c,
+	p := &prime{
+		ch:    c,
 		limit: k,
 	}
 	src := p.generate()

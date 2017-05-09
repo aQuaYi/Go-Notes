@@ -5,9 +5,8 @@ import (
 	"sync"
 )
 
-//Prime 是以发送素数的channel为主的结构体
-type Prime struct {
-	Chan  chan int
+type prime struct {
+	ch    chan int
 	limit int
 	wg    sync.WaitGroup
 }
@@ -15,15 +14,15 @@ type Prime struct {
 //NewUnder 设置了产生素数的范围
 func NewUnder(limit int) <-chan int {
 	c := make(chan int)
-	p := &Prime{
-		Chan:  c,
+	p := &prime{
+		ch:    c,
 		limit: limit,
 	}
 
 	src := p.generate()
 	p.loop(src)
 
-	return p.Chan
+	return p.ch
 }
 
 //New 会发送int范围内的所有素数
@@ -31,7 +30,7 @@ func New() <-chan int {
 	return NewUnder(math.MaxInt64)
 }
 
-func (p *Prime) generate() <-chan int {
+func (p *prime) generate() <-chan int {
 	src := make(chan int)
 	p.wg.Add(1)
 
@@ -48,7 +47,7 @@ func (p *Prime) generate() <-chan int {
 	return src
 }
 
-func (p *Prime) filter(src <-chan int, prime int) <-chan int {
+func (p *prime) filter(src <-chan int, prime int) <-chan int {
 	dst := make(chan int)
 	p.wg.Add(1)
 
@@ -68,19 +67,19 @@ func (p *Prime) filter(src <-chan int, prime int) <-chan int {
 	return dst
 }
 
-func (p *Prime) loop(src <-chan int) {
+func (p *prime) loop(src <-chan int) {
 	go func() {
-
 		for {
-			prime, isOpen := <-src
+			prime, isOpen := <-src //每个src发出的第一个数，都是素数。
 			if !isOpen {
+				//最后一个src(下文称为src-1)，直到倒数第二个src(下文称为src-2)关闭，都没有来得及发现下一个素数。但是由于src-2关闭了，src-1也马上被关闭了。此时，反而可以从src-1中取值了。只是，此时的isOpen被为false。经过if语句判断后，会结束本for循环。
 				break
 			}
-			p.Chan <- prime
+			p.ch <- prime
 			src = p.filter(src, prime)
 		}
 		//等待所有的src关闭
 		p.wg.Wait()
-		close(p.Chan)
+		close(p.ch)
 	}()
 }
