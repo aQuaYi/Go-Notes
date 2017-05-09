@@ -105,26 +105,3 @@ func Benchmark_NewUnder10K(b *testing.B) {
 		}
 	}
 }
-func Benchmark_NewUnder100K(b *testing.B) {
-	for i := 1; i < b.N; i++ {
-		primeCh := NewUnder(100 * 1000)
-		for {
-			_, isOpen := <-primeCh
-			if !isOpen {
-				break
-			}
-		}
-	}
-}
-
-func Benchmark_NewUnder1M(b *testing.B) {
-	for i := 1; i < b.N; i++ {
-		primeCh := NewUnder(1000 * 1000)
-		for {
-			_, isOpen := <-primeCh
-			if !isOpen {
-				break
-			}
-		}
-	}
-}
