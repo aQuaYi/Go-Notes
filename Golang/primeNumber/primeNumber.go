@@ -1,12 +1,18 @@
 package primeNumber
 
-import "math"
+import "sync"
+import "time"
+
+var wg sync.WaitGroup
 
 //发送所有的整数
 func generate(ch chan<- int) {
-	for i := 2; i < math.MaxInt64; i++ {
+	time.Sleep(time.Millisecond * 100)
+	for i := 2; i < 1000; i++ {
 		ch <- i
 	}
+	close(ch)
+	wg.Done()
 }
 
 func filter(src <-chan int, dst chan<- int, prime int) {
@@ -16,25 +22,37 @@ func filter(src <-chan int, dst chan<- int, prime int) {
 			//特别地，第一个通过此检验的i，本身就是素数。
 		}
 	}
+	close(dst)
+	wg.Done()
 }
 
 func answer(src <-chan int) <-chan int {
 	result := make(chan int)
+
 	go func() {
+
 		for {
+			wg.Add(1)
+			dst := make(chan int)
 			prime := <-src
 			result <- prime
-			dst := make(chan int)
 			go filter(src, dst, prime)
 			src = dst
 		}
 	}()
+
+	go func() {
+		wg.Wait()
+		close(result)
+	}()
+
 	return result
 }
 
 //Chan 返回一个发送prime number的channel
 func Chan() <-chan int {
 	src := make(chan int) // Create a new channel.
-	go generate(src)      // Start generate() as a subprocess.
+	wg.Add(1)
+	go generate(src) // Start generate() as a subprocess.
 	return answer(src)
 }
