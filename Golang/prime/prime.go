@@ -2,14 +2,14 @@ package prime
 
 import "math"
 
-//NewUnder 需要设置产生素数的范围
+//NewUnder 返回一个channel 发送 all prime < limit
 func NewUnder(limit int) <-chan int {
 	src := generate(limit)
 	result := loop(src)
 	return result
 }
 
-//New 会发送int范围内的所有素数
+//New 需要设置产生素数的范围
 func New() <-chan int {
 	return NewUnder(math.MaxInt64)
 }
@@ -19,7 +19,7 @@ func generate(limit int) <-chan int {
 
 	go func() {
 		//发送所有在limit范围内的数。
-		for i := 2; i <= limit; i++ {
+		for i := 2; i < limit; i++ {
 			src <- i
 		}
 		//发送完毕后，关闭通道
