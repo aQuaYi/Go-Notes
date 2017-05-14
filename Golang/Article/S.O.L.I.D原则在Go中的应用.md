@@ -3,7 +3,7 @@
 原文地址：[【译】S.O.L.I.D 原则在 Go 中的应用（上）](http://yemengying.com/2016/09/11/solid-go-design-1/index.html)，[S.O.L.I.D 原则在 Go 中的应用（下）](http://kevin.doyeden.com/2016/09/21/solid-go-design-2/)
 
 
-##臭代码的表现
+## 臭代码的表现
 
 - Rigid 代码僵硬，由于严格的类型和参数导致修改代码的成本提高。
 - Fragile 代码脆弱，一点小的改动就会造成巨大的破坏。
@@ -15,27 +15,21 @@
 
 2002年，Robert Martin 描述了可重用软件设计的SOLID 原则
 
-- 单一责任
-- 开放封闭
-- 里氏替换
-- 接口分离
-- 依赖倒置
+- 单一责任：Single Responsibility Principle
+- 开放封闭：Open / Closed Principle
+- 里氏替换：Liskov Substitution Principle
+- 接口分离：Interface Segregation Principle
+- 依赖倒置：Dependency Inversion Principle
 
 
 ## 单一责任
-Robert C Martin 说过 A class should have one, and only one, reason to change(修改某个类的时候，原因有且只有一个)，说白了就是，一个类只负责一项职责。
-
-### 耦合 & 内聚
-这两个词是用来形容一段代码是否易于修改的。
+A class should have one, and only one, reason to change(修改某个类的原因，有且只有一个)，即，一个类只负责一项职责。
 
 `耦合`是指两个东西需要一起修改—对其中一个的改动会影响到另一个。
-
-另一个相关但独立的概念是`内聚`，一般指相互吸引的迷之力量。
-
-在软件开发领域中，内聚常常用来描述一段代码内各个元素彼此结合的紧密程度。
+`内聚`用来描述一段代码内各个元素彼此结合的紧密程度。
 
 ## 开放封闭
-1988年，Bertrand Mey 在他的著作《面向对象软件构造》一书中写道：Software entities should be open for extension,but closed for modification（软件实体应当对扩展开放，对修改关闭）。
+Bertrand Mey认为，Software entities should be open for extension,but closed for modification（软件实体应当对扩展开放，对修改关闭）。
 
 ```go
 package main
