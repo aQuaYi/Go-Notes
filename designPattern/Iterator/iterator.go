@@ -2,7 +2,7 @@
 package main
 
 import (
-	it "DesignModel/Iterator/Iterator"
+	it "ShowYouTheGolangCode/designPattern/Iterator/Iterator"
 )
 
 func main() {
