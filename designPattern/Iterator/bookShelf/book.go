@@ -2,12 +2,11 @@ package bookShelf
 
 import "fmt"
 
-//Booker
+//Booker 包含了book所有的暴露方法
 type Booker interface {
 	Do()
 }
 
-// Book 定义了书籍类
 type book struct {
 	name string
 }

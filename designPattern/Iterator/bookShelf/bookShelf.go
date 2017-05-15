@@ -5,7 +5,7 @@ type BookShelfer interface {
 	Append(string)
 	Get(int) Booker
 	Len() int
-	Iterator() Iterator
+	Iterator() <-chan Booker
 }
 
 //bookShelf 定义了书架类
@@ -32,6 +32,15 @@ func (bs *bookShelf) Len() int {
 	return bs.number
 }
 
-func (bs *bookShelf) Iterator() Iterator {
-	return &bookShelfIterator{bookShelf: bs}
+func (bs *bookShelf) Iterator() <-chan Booker {
+	bookCh := make(chan Booker)
+
+	go func() {
+		defer close(bookCh)
+		for _, v := range bs.books {
+			bookCh <- v
+		}
+	}()
+
+	return bookCh
 }
