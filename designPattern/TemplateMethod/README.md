@@ -5,7 +5,7 @@
 
 ## 模块讲解
 
-DesignModel/TemplateMethod/templateMethod中，规定了Display()算法的步骤是，
+Display()的步骤是，
 1. 先open()一下
 2. 再print()5遍
 3. 最后close()
