@@ -10,4 +10,4 @@ Display()的步骤是，
 2. 再print()5遍
 3. 最后close()
 
-charDisplay和stringDisplay的Display方法，都遵循这样的步骤。但是，他们两的open，print和close又各不相同。 所以，把步骤放入了abstractDisplay结构体中。
+charDisplay和stringDisplay的Display方法，都遵循这样的步骤。但是，他们两的open，print和close又各不相同。 所以，把步骤放入了display结构体中。

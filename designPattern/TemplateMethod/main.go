@@ -15,6 +15,7 @@ type Displayer interface {
 	Display()
 }
 
+//displayAbler包含了Display()所需的方法
 type displayAbler interface {
 	open()
 	print()
@@ -30,14 +31,17 @@ func (d *display) Display() {
 		return
 	}
 
+	//公共的Display()过程
 	d.open()
 	for i := 0; i < 5; i++ {
 		d.print()
 	}
-
 	d.close()
 }
 
+/*
+charDisplay实现了实现了一个字符的dispalyAbler接口
+*/
 type charDisplay struct {
 	ch byte
 }
@@ -61,6 +65,9 @@ func (cd *charDisplay) close() {
 	fmt.Println(">>")
 }
 
+/*
+stringDisplay实现了一个字符串的displayAbler接口
+*/
 type stringDisplay struct {
 	str string
 }
@@ -71,6 +78,7 @@ func NewString(s string) Displayer {
 	result.displayAbler = &stringDisplay{str: s}
 	return result
 }
+
 func (sd *stringDisplay) printLine() {
 	length := len(sd.str)
 
