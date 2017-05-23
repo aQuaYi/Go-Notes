@@ -14,14 +14,14 @@ func (f HandlerFunc) Do(k, v interface{}) {
 	f(k, v)
 }
 
-func Each(m map[interface{}]interface{}, h Handler) {
+func each(m map[interface{}]interface{}, h Handler) {
 	for k, v := range m {
 		h.Do(k, v)
 	}
 }
 
 func EachFunc(m map[interface{}]interface{}, f func(k, v interface{})) {
-	Each(m, HandlerFunc(f))
+	each(m, HandlerFunc(f))
 }
 
 func selfAge(k, v interface{}) {

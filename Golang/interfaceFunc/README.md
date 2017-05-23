@@ -1,6 +1,11 @@
 # 抽象过程与具体步骤分离的优雅方式
 
+[Golang必备技巧：接口型函数](http://www.flysnow.org/2016/12/30/golang-function-interface.html)中提到，原始接口实现，无法提供多样化的接口方法名称，不够灵活。具体代码在`old\main.go`目录下。
+于是，他添加了一个转换方法，用来把不同的处理方法转换成统一的接口形式。这样，就可以使用不同的函数来处理。具体代码在本目录的`main.go`中。
+但是，我还是觉得以上实现显得的累赘，绕到了接口，又添加了一个转换函数。考虑到函数在Golang中是第一公民。于是，我尝试了一下直接把函数作为参数传入。结果，发现在Golang当中
 
+**函数类型是duck typing**
+**函数类型是duck typing**
+**函数类型是duck typing**
 
-## 参考文档
-[Golang必备技巧：接口型函数](http://www.flysnow.org/2016/12/30/golang-function-interface.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+然后，整个程序就更清晰明了啦。具体代码在`libExample`下。
