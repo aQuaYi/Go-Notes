@@ -1,0 +1,5 @@
+# 未暴露的标识符
+
+unexportedType中可以看到，包私有的变量类型，可以通过函数返回值的方式，在包外的地方进行获取与使用。
+
+unexportingEmbeddedType中可以看到，虽然在Admin中嵌入的usr是私有的，但是user下的Name和Email是公开的，依然可以通过Admin.Name和Admin.Email访问到。
