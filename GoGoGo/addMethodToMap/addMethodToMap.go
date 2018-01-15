@@ -1,4 +1,5 @@
 // myMap.go
+// this is my map
 package main
 
 import (
