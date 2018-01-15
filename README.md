@@ -1,4 +1,4 @@
-# Show You the Golang Code
+# Show You the Go Code
 Talk is cheap, show you the code.
 
 ## 目录
