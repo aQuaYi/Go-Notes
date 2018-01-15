@@ -9,4 +9,4 @@
     1. [快速排序](./sort/quick)
     1. [三向快速排序](./sort/quick3way)
     1. [堆排序](./sort/heap)
-
+1. [查找](./search)
