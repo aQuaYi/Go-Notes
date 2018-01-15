@@ -1,5 +1,5 @@
 # Show You the Go Code
-Talk is cheap, show you the code.
+Talk is cheap, show you the Go code.
 
 ## 目录
 1. [算法](./algorithms)
