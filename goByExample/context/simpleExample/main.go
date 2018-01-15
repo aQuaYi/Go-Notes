@@ -50,7 +50,7 @@ func main() {
 		defer cancel()
 	}
 
-	{
+	{ // 使用大括号，感觉很有层次
 		//使用cancel终结
 		ctx, cancel := context.WithCancel(context.Background())
 
