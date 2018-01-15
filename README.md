@@ -6,5 +6,3 @@ Talk is cheap, show you the Go code.
     1. [排序](./algorithms/sort)
 1. [设计模式](./designPattern)
 1. [Golang](./Golang)
-1. [LeetCode](./leetCode)
-1. [ProjectEuler](./projectEuler)
