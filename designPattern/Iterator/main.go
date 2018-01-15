@@ -2,7 +2,7 @@
 package main
 
 import (
-	"ShowYouTheGolangCode/designPattern/Iterator/bookShelf"
+	"github.com/aQuaYi/show-You-the-Go-Code/designPattern/Iterator/bookShelf"
 )
 
 func main() {
