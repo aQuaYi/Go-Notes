@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"ShowYouTheGolangCode/Golang/libTimer/tickPrint"
+	"github.com/aQuaYi/Show-You-the-Go-Code/Golang/libTimer/tickPrint"
 )
 
 func init() {
