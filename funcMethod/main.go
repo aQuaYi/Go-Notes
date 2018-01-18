@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"strings"
+	"time"
 )
 
 func main() {
@@ -26,11 +28,14 @@ func main() {
 	p.value()
 	p.pointer()
 
-	//
+	// TODO: 解决无法输出的问题
 	var t T
 	t.S.si = 1
 	fmt.Println("-----------")
-	methodSet(t)
+	//methodSet(t)
+	//Print(t)
+	methodSet(time.Hour)
+	//Print(time.Hour)
 	fmt.Println("-----------")
 	methodSet(&t)
 	fmt.Println("-----------")
@@ -65,11 +70,25 @@ func (t T) tVal() {}
 func (t *T) tPtr() {}
 
 func methodSet(a interface{}) {
-	t := reflect.TypeOf(a)
+	v := reflect.ValueOf(a)
+	t := v.Type()
 	fmt.Printf("show method sets of %s\n", t.Name())
 
-	for i, n := 0, t.NumMethod(); i < n; i++ {
-		m := t.Method(i)
-		fmt.Println(m.Name, m.Type)
+	for i := 0; i < v.NumMethod(); i++ {
+		m := v.Method(i)
+		fmt.Println(m.Type())
+	}
+}
+
+// Print prints the method set of the value x.
+func Print(x interface{}) {
+	v := reflect.ValueOf(x)
+	t := v.Type()
+	fmt.Printf("type %s\n", t)
+
+	for i := 0; i < v.NumMethod(); i++ {
+		methType := v.Method(i).Type()
+		fmt.Printf("func (%s) %s%s\n", t, t.Method(i).Name,
+			strings.TrimPrefix(methType.String(), "func"))
 	}
 }
