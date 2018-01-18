@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"reflect"
-	"strings"
-	"time"
 )
 
 func main() {
@@ -28,17 +26,14 @@ func main() {
 	p.value()
 	p.pointer()
 
-	// TODO: 解决无法输出的问题
 	var t T
-	t.S.si = 1
-	fmt.Println("-----------")
-	//methodSet(t)
-	//Print(t)
-	methodSet(time.Hour)
-	//Print(time.Hour)
-	fmt.Println("-----------")
+	fmt.Println("--查看 T 的方法集------------------------")
+	methodSet(t)
+	fmt.Println("--查看 *T 的方法集-----------------------")
 	methodSet(&t)
-	fmt.Println("-----------")
+	fmt.Println("--SPtr 不在 T 的方法集中, 依然可以被调用---")
+	fmt.Println("--call t.SPtr()---")
+	t.SPtr()
 }
 
 type num int
@@ -54,41 +49,28 @@ func (n *num) pointer() {
 }
 
 type S struct {
-	si int
 }
 
 type T struct {
 	S
 }
 
-func (s S) sVal() {}
+func (S) SVal() {}
 
-func (s *S) sPtr() {}
+func (*S) SPtr() {
+	fmt.Println("I'm sPtr")
+}
 
-func (t T) tVal() {}
+func (T) TVal() {}
 
-func (t *T) tPtr() {}
+func (*T) TPtr() {}
 
 func methodSet(a interface{}) {
-	v := reflect.ValueOf(a)
-	t := v.Type()
-	fmt.Printf("show method sets of %s\n", t.Name())
+	t := reflect.TypeOf(a)
 
-	for i := 0; i < v.NumMethod(); i++ {
-		m := v.Method(i)
-		fmt.Println(m.Type())
+	for i, n := 0, t.NumMethod(); i < n; i++ {
+		m := t.Method(i)
+		println(m.Name)
 	}
 }
 
-// Print prints the method set of the value x.
-func Print(x interface{}) {
-	v := reflect.ValueOf(x)
-	t := v.Type()
-	fmt.Printf("type %s\n", t)
-
-	for i := 0; i < v.NumMethod(); i++ {
-		methType := v.Method(i).Type()
-		fmt.Printf("func (%s) %s%s\n", t, t.Method(i).Name,
-			strings.TrimPrefix(methType.String(), "func"))
-	}
-}
