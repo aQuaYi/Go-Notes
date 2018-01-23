@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48b1c792-ade3-4a46-a03b-9b40c94a91fe" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/concurrency/printIn2Goroutine/main.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/concurrency/printIn2Goroutine/main_test.go" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,11 +16,31 @@
   <component name="ChangesViewManager" flattened_view="false" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="bench.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bench.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/concurrency/bench/bench.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+            <state relative-caret-position="108">
+              <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/concurrency/printIn2Goroutine/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/concurrency/printIn2Goroutine/main_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -85,6 +107,8 @@
         <option value="$USER_HOME$/.GoLand2017.3/config/goland64.vmoptions" />
         <option value="$PROJECT_DIR$/concurrency/bench/bench_test.go" />
         <option value="$PROJECT_DIR$/concurrency/bench/bench.go" />
+        <option value="$PROJECT_DIR$/concurrency/printIn2Goroutine/main_test.go" />
+        <option value="$PROJECT_DIR$/concurrency/printIn2Goroutine/main.go" />
       </list>
     </option>
   </component>
@@ -201,13 +225,34 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Show-You-the-Go-Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Show-You-the-Go-Code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Show-You-the-Go-Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Show-You-the-Go-Code" type="462c0819:PsiDirectoryNode" />
+              <item name="concurrency" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Show-You-the-Go-Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Show-You-the-Go-Code" type="462c0819:PsiDirectoryNode" />
+              <item name="concurrency" type="462c0819:PsiDirectoryNode" />
+              <item name="printIn2Goroutine" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -231,7 +276,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build atexit.go">
+  <component name="RunManager" selected="Go Test.Benchmark_channelPrinter in main_test.go">
     <configuration name="go build atexit.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="Show-You-the-Go-Code" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -248,22 +293,6 @@
       <filePath value="$PROJECT_DIR$/channel/factoryMethod/factory.go" />
       <directory value="$PROJECT_DIR$/" />
     </configuration>
-    <configuration name="go build sar.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
-      <module name="Show-You-the-Go-Code" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/channel/sendAndReceive/sar.go" />
-      <directory value="$PROJECT_DIR$/" />
-    </configuration>
-    <configuration name="go build select.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
-      <module name="Show-You-the-Go-Code" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/channel/select/select.go" />
-      <directory value="$PROJECT_DIR$/" />
-    </configuration>
     <configuration name="go build semaphore.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="Show-You-the-Go-Code" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -272,20 +301,38 @@
       <filePath value="$PROJECT_DIR$/channel/semaphore/semaphore.go" />
       <directory value="$PROJECT_DIR$/" />
     </configuration>
+    <configuration name="Benchmark_channelPrinter in main_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="Show-You-the-Go-Code" />
+      <working_directory value="$PROJECT_DIR$/concurrency/printIn2Goroutine" />
+      <go_parameters value="-i" />
+      <framework value="gobench" />
+      <kind value="PACKAGE" />
+      <package value="github.com/aQuaYi/Show-You-the-Go-Code/concurrency/printIn2Goroutine" />
+      <pattern value="^Benchmark_channelPrinter$" />
+    </configuration>
+    <configuration name="Benchmark_waitGroupPrinter in main_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="Show-You-the-Go-Code" />
+      <working_directory value="$PROJECT_DIR$/concurrency/printIn2Goroutine" />
+      <go_parameters value="-i" />
+      <framework value="gobench" />
+      <kind value="PACKAGE" />
+      <package value="github.com/aQuaYi/Show-You-the-Go-Code/concurrency/printIn2Goroutine" />
+      <pattern value="^Benchmark_waitGroupPrinter$" />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Go Build.go build sar.go" />
-      <item index="1" class="java.lang.String" itemvalue="Go Build.go build select.go" />
-      <item index="2" class="java.lang.String" itemvalue="Go Build.go build factory.go" />
-      <item index="3" class="java.lang.String" itemvalue="Go Build.go build semaphore.go" />
-      <item index="4" class="java.lang.String" itemvalue="Go Build.go build atexit.go" />
+      <item index="0" class="java.lang.String" itemvalue="Go Build.go build factory.go" />
+      <item index="1" class="java.lang.String" itemvalue="Go Build.go build semaphore.go" />
+      <item index="2" class="java.lang.String" itemvalue="Go Build.go build atexit.go" />
+      <item index="3" class="java.lang.String" itemvalue="Go Test.Benchmark_waitGroupPrinter in main_test.go" />
+      <item index="4" class="java.lang.String" itemvalue="Go Test.Benchmark_channelPrinter in main_test.go" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Go Build.go build atexit.go" />
-        <item index="1" class="java.lang.String" itemvalue="Go Build.go build semaphore.go" />
-        <item index="2" class="java.lang.String" itemvalue="Go Build.go build factory.go" />
-        <item index="3" class="java.lang.String" itemvalue="Go Build.go build select.go" />
-        <item index="4" class="java.lang.String" itemvalue="Go Build.go build sar.go" />
+        <item index="0" class="java.lang.String" itemvalue="Go Test.Benchmark_channelPrinter in main_test.go" />
+        <item index="1" class="java.lang.String" itemvalue="Go Test.Benchmark_waitGroupPrinter in main_test.go" />
+        <item index="2" class="java.lang.String" itemvalue="Go Build.go build atexit.go" />
+        <item index="3" class="java.lang.String" itemvalue="Go Build.go build semaphore.go" />
+        <item index="4" class="java.lang.String" itemvalue="Go Build.go build factory.go" />
       </list>
     </recent_temporary>
   </component>
@@ -503,15 +550,28 @@
       <option name="project" value="LOCAL" />
       <updated>1516677554714</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="update workspace">
+      <created>1516677572242</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1516677572242</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TestHistory">
     <history-entry file="Benchmark_array_in_main_test_go - 2018.01.17 at 14h 51m 10s.xml">
       <configuration name="Benchmark_array in main_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="Benchmark_channelPrinter_in_main_test_go - 2018.01.23 at 14h 30m 18s.xml">
+      <configuration name="Benchmark_channelPrinter in main_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
     <history-entry file="Benchmark_slice_in_main_test_go - 2018.01.17 at 14h 50m 56s.xml">
       <configuration name="Benchmark_slice in main_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Benchmark_waitGroupPrinter_in_main_test_go - 2018.01.23 at 13h 54m 02s.xml">
+      <configuration name="Benchmark_waitGroupPrinter in main_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
     <history-entry file="gobench_github_com_aQuaYi_Show-You-the-Go-Code_sliceStruct - 2018.01.17 at 14h 51m 30s.xml">
       <configuration name="gobench github.com/aQuaYi/Show-You-the-Go-Code/sliceStruct" configurationId="GoTestRunConfiguration" />
@@ -533,17 +593,17 @@
     <frame x="65" y="-4" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37254903" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1830907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32754758" sideWeight="0.50511944" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5335946" sideWeight="0.49659285" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38431373" sideWeight="0.49488056" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38409853" sideWeight="0.49488056" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885155" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5531915" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5531795" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -597,7 +657,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="false" />
     <confirmRemoveEmptyChangelist value="2" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
-    <MESSAGE value="添加了另外两个仓库的文件。" />
     <MESSAGE value="修改测试。" />
     <MESSAGE value="添加了搜索目录" />
     <MESSAGE value="添加了搜索的 README.md" />
@@ -622,35 +681,19 @@
     <MESSAGE value="实现了一个简易的 atExit 程序" />
     <MESSAGE value="benchmark 发送数组比发送单个数据要快得多" />
     <MESSAGE value="update workspave" />
-    <option name="LAST_COMMIT_MESSAGE" value="update workspave" />
+    <MESSAGE value="update workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="update workspace" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Golang/context/context.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithms/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithms/sort/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -874,13 +917,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/concurrency/lk" />
-    <entry file="file:///usr/local/go/src/sync/waitgroup.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/concurrency/wait/wait.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1007,8 +1043,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/concurrency/bench/bench.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+        <state relative-caret-position="108">
+          <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/sync/waitgroup.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="732">
+          <caret line="51" column="21" lean-forward="false" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/concurrency/printIn2Goroutine/main_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/concurrency/printIn2Goroutine/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
         </state>
       </provider>
