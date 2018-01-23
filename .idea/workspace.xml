@@ -17,8 +17,8 @@
       <file leaf-file-name="bench.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/concurrency/bench/bench.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="72">
+              <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -496,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516677058220</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="update workspave">
+      <created>1516677554714</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1516677554714</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -590,7 +597,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="false" />
     <confirmRemoveEmptyChangelist value="2" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
-    <MESSAGE value="清理了目录。形成一个统一的 Go 语言学习笔记。" />
     <MESSAGE value="添加了另外两个仓库的文件。" />
     <MESSAGE value="修改测试。" />
     <MESSAGE value="添加了搜索目录" />
@@ -615,7 +621,8 @@
     <MESSAGE value="实现了 semaphore" />
     <MESSAGE value="实现了一个简易的 atExit 程序" />
     <MESSAGE value="benchmark 发送数组比发送单个数据要快得多" />
-    <option name="LAST_COMMIT_MESSAGE" value="benchmark 发送数组比发送单个数据要快得多" />
+    <MESSAGE value="update workspave" />
+    <option name="LAST_COMMIT_MESSAGE" value="update workspave" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1000,8 +1007,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/concurrency/bench/bench.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="72">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding />
         </state>
       </provider>
