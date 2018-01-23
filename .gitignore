@@ -25,5 +25,4 @@ _testmain.go
 
 # 不需要提交 .idea 文件夹
 .idea
-.idea/workspace.xml
 .vscode
