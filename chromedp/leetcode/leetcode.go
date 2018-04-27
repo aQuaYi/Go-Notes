@@ -52,6 +52,7 @@ func getFunction(function *string) chromedp.Tasks {
 	btn := `#question-detail-app > div > div:nth-child(3) > div > div > div.row.control-btn-bar > div > div > div > div > span.Select-arrow-zone`
 	goSel := `#react-select-2--option-9`
 	return chromedp.Tasks{
+		// chromedp.Navigate(`https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/description/`),
 		chromedp.Navigate(`https://leetcode.com/problems/k-th-symbol-in-grammar/description/`),
 		chromedp.Click(btn, chromedp.ByID),
 		chromedp.Click(goSel, chromedp.ByID),
