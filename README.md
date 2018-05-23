@@ -1,10 +1,3 @@
-# Show You the Go Code
+# 深入 Go 语言
 
-Talk is cheap, show you the Go code.
-
-## 目录
-
-1. [算法](./algorithms)
-    1. [排序](./algorithms/sort)
-1. [设计模式](./designPattern)
-1. [Golang](./Golang)
+收集了我学习 Go 语言的练手记录
