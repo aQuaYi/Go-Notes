@@ -35,7 +35,7 @@ func main() {
 	sw.DirListType = skywalker.LTWhitelist
 	sw.DirList = []string{"temp"}
 	sw.ExtListType = skywalker.LTWhitelist
-	sw.ExtList = []string{".MDTemplate"}
+	sw.ExtList = []string{".markdown"}
 	err := sw.Walk()
 	if err != nil {
 		fmt.Println(err)
