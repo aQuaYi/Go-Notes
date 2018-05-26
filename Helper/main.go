@@ -32,17 +32,22 @@ func main() {
 	root := "."
 	sw := skywalker.New(root, ew)
 	// sw.DirListType = skywalker.LTBlacklist
-	sw.DirListType = skywalker.LTWhitelist
-	sw.DirList = []string{"temp"}
+	// sw.DirListType = skywalker.LTWhitelist
+	// sw.DirList = []string{"temp"}
 	sw.ExtListType = skywalker.LTWhitelist
-	sw.ExtList = []string{".md"}
+	sw.ExtList = []string{".md", ".markdown"}
 	err := sw.Walk()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(sw.Root)
-	sort.Sort(sort.StringSlice(ew.found))
+
+	// sort.Sort(sort.StringSlice(ew.found))
+	sort.Slice(ew.found, func(i int, j int) bool {
+		return len(ew.found[i]) > len(ew.found[j])
+	})
+
 	for _, f := range ew.found {
 		fmt.Println(strings.Replace(f, sw.Root, "", 1))
 	}
