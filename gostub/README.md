@@ -21,3 +21,50 @@ GoDoc： <https://godoc.org/github.com/prashantv/gostub>
 ## 使用场景
 
 ### 为全局变量打桩
+
+```go
+stubs := Stub(&num, 150)
+defer stubs.Reset()
+```
+
+stubs 会在上级函数结束后，把 num 恢复为原值。
+
+### 为函数打桩
+
+想要给函数打桩，需要将其重构成函数变量
+
+把
+
+```go
+func Exec(s string) string {
+    // ...
+}
+```
+
+写成
+
+```go
+var Exec = func(s string) string {
+    // ...
+}
+```
+
+> 注意： 这样的重构丝毫不会影响 Exec 的功能。
+
+此时，就可以对 Exec 像普通变量那样进行打桩了
+
+```go
+stubs := Stub(&Exec, func(s string) string {
+            return "This is stub function."
+})
+defer stubs.Reset()
+```
+
+实际上，gostub 提供了 StubFunc 专门用于函数的打桩。
+
+```go
+stubs := StubFunc(&Exec, "This is stub function.")
+defer stubs.Reset()
+```
+
+### 为 import 的库中的函数打桩
