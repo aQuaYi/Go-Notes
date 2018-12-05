@@ -4,6 +4,8 @@ GoConvey 是一个很有特色的 Go 测试框架。
 
 主页： <http://goconvey.co/>
 
+Wiki： <https://github.com/smartystreets/goconvey/wiki/Documentation>
+
 Github： <https://github.com/smartystreets/goconvey>
 
 GoDoc：<https://godoc.org/github.com/smartystreets/goconvey#pkg-subdirectories>
