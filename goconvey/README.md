@@ -63,6 +63,46 @@ GoConvey 会对文件夹进行持续监控，并报告多种测试结果。
 
 SkipConvey 和 SkipSo 的内容会在 WEB 测试报告中，以 "⚠" 符号标记。
 
+## convey 的隔离执行
+
+当 convey 多层嵌套时，convey 的执行流程会与常识不同。建议仔细阅读 [isolated_execution_test.go](https://github.com/smartystreets/goconvey/blob/master/convey/isolated_execution_test.go) 中的测试代码，好好体会一下。
+
+以下抽离了其中的一个片段来讲解。
+
+```go
+func TestNestedScopesWithIsolatedExecution(t *testing.T) {
+    output := ""
+
+    Convey("a", t, func() {
+        output += "a "
+
+        Convey("aa", func() {
+            output += "aa "
+
+            Convey("aaa", func() {
+                output += "aaa | "
+            })
+
+            Convey("aab", func() {
+                output += "aab | "
+            })
+        })
+
+        Convey("ab", func() {
+            output += "ab "
+
+            Convey("aba", func() {
+                output += "aba | "
+                So(output, ShouldEqual, "a aa aaa | a aa aab | a ab aba | ")
+            })
+        })
+    })
+
+}
+```
+
+最后的断言，是不是有点意想不到。我对 convey 的理解是： 每个 convey 执行时，都会再执行一遍，同级以及上级 convey。另外由于闭包，output 会记录所有步骤的修改。
+
 ## 定制断言函数
 
 [这里](https://godoc.org/github.com/smartystreets/goconvey/convey#pkg-variables)罗列了 GoConvey 中的原生断言函数，全部以 Should 开头。
@@ -76,6 +116,7 @@ SkipConvey 和 SkipSo 的内容会在 WEB 测试报告中，以 "⚠" 符号标�
 [assertions/filter.go](https://github.com/smartystreets/assertions/blob/master/filter.go) 中定义了断言函数的使用方法。
 
 于是，我们可以自定义断言函数
+
 
 ```go
 func ShouldSummerBeComing(actual interface{}, expected ...interface{}) string {
