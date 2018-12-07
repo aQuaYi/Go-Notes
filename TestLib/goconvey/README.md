@@ -1,14 +1,33 @@
-# GoConvey 测试框架
+# GoConvey 测试框架使用指南
 
-GoConvey 是一个很有特色的 Go 测试框架。
+[主页](http://goconvey.co/) -
+[Github](https://github.com/smartystreets/goconvey) -
+[GoDoc](https://godoc.org/github.com/smartystreets/goconvey#pkg-subdirectories)
 
-主页： <http://goconvey.co/>
+> convey :
+> 表达，传达（思想、感情或想法）
 
-Wiki： <https://github.com/smartystreets/goconvey/wiki/Documentation>
+GoConvey 是 Go 语言测试框架。作者使用 convey 作为架构名称以及最主要函数的名称，是希望测试程序，能够表达出代码运行方式。
 
-Github： <https://github.com/smartystreets/goconvey>
+GoConvey 的特性有：
 
-GoDoc：<https://godoc.org/github.com/smartystreets/goconvey#pkg-subdirectories>
+1. 完全兼容 `go test`
+1. 自动监控测试的 Web UI
+1. 大型回归测试套件
+1. 显示覆盖率（需要 go 1.2 及以上）
+1. 已读并作色的终端输出
+1. 测试代码生成（TODO: 重点）
+1. Web UI 可以利用浏览器的通知机制
+
+## 安装
+
+在命令行输入
+
+```shell
+go get github.com/smartystreets/goconvey
+```
+
+会下载 GoConvey 的源代码，并在 `$GOPATH/bin` 中生成 `goconvey` 可执行文件。
 
 ## 快速开始
 
