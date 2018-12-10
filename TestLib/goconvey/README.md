@@ -103,6 +103,14 @@ ok      github.com/aQuaYi/Go-Notes/TestLib/goconvey/simple    0.001s
 
 SkipConvey 和 SkipSo 的内容会在 WEB 测试报告中，以 "S" 符号标记。
 
+还可以，把顶层的 Convey 变成 FocusConvey，那么子 Convey 也需要被修改成 FocusConvey 才能被执行。
+
+[点击这里，查看 FocusConvey 的说明](https://sourcegraph.com/-/godoc/refs?def=FocusConvey&pkg=github.com%2Fsmartystreets%2Fgoconvey%2Fconvey&repo=github.com%2Fsmartystreets%2Fgoconvey)
+
+简单地说，`SkipConvey` 与 `FocusConvey` 具有正好相反的作用。
+
+> 那 `SkipConvey` 与 `FocusConvey` 被嵌套在对方的下面时，会发生什么呢？请使用  `./simple/simple_test.go` 修成查验。
+
 ## convey 的隔离执行
 
 当 convey 多层嵌套时，convey 的执行流程会与常识不同。建议仔细阅读 [isolated_execution_test.go](https://github.com/smartystreets/goconvey/blob/master/convey/isolated_execution_test.go) 中的测试代码，好好体会一下。
@@ -180,4 +188,12 @@ func ShouldSummerBeComing(actual interface{}, expected ...interface{}) string {
 
 > 注意：左边使用 **tab** 进行缩进
 
-## Reset 函数 TODO:
+## Reset 函数
+
+```go
+func Reset(action func())
+```
+
+一般用来注册清理函数，**因为每次与 Reset 处于相同作用域的 Convey 执行完毕后， Reset 都会被调用一次**。
+
+##
