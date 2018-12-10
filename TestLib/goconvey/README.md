@@ -29,6 +29,8 @@ go get github.com/smartystreets/goconvey
 
 会下载 GoConvey 的源代码，并在 `$GOPATH/bin` 中生成 `goconvey` 可执行文件。
 
+> 当 $GOPATH 中不止是一个目录的时候，可能无法正确地生成 $GOPATH/bin/goconvey
+
 ## 快速开始
 
 ```go
@@ -58,19 +60,38 @@ func TestSpec(t *testing.T) {
 1. 导入 convey 的时候，重命名为 "."，可以让后续的程序更通顺。
 1. 只有顶层的 Convey 函数需要传入 t
 
-## Web 测试报告
+### Web 测试报告
 
 ![GoConvey-WEB](GoConvey-WEB.webp)
 
-在命令行输入：
+在命令行中跳转到测试文件所在的目录，并输入以下命令：
 
 ```shell
 $GOPATH/bin/goconvey
 ```
 
-会自动在浏览器中打开以上页面。
+会自动在浏览器中打开 `http://localhost:8080/` 页面，呈现以上界面。
 
 GoConvey 会对文件夹进行持续监控，并报告多种测试结果。
+
+### 命令行测试
+
+当然，也可以 `go test` 工具运行单元测试。以下是 `./simple/simple_test.go` 的测试结果。
+
+```shell
+$ go test -v
+=== RUN   TestSpec
+
+  Given some integer with a starting value
+    When the integer is incremented
+      The value should be greater by one ✔
+
+1 total assertion
+
+--- PASS: TestSpec (0.00s)
+PASS
+ok      github.com/aQuaYi/Go-Notes/TestLib/goconvey/simple    0.001s
+```
 
 ## 跳过测试
 
@@ -80,7 +101,7 @@ GoConvey 会对文件夹进行持续监控，并报告多种测试结果。
 
 [点击这里，查看 SkipConvey 和 SkipSo 的说明](https://godoc.org/github.com/smartystreets/goconvey/convey#SkipConvey)
 
-SkipConvey 和 SkipSo 的内容会在 WEB 测试报告中，以 "⚠" 符号标记。
+SkipConvey 和 SkipSo 的内容会在 WEB 测试报告中，以 "S" 符号标记。
 
 ## convey 的隔离执行
 
@@ -136,7 +157,6 @@ func TestNestedScopesWithIsolatedExecution(t *testing.T) {
 
 于是，我们可以自定义断言函数
 
-
 ```go
 func ShouldSummerBeComing(actual interface{}, expected ...interface{}) string {
     if actual == "summer" && expected[0] == "coming" {
@@ -148,6 +168,16 @@ func ShouldSummerBeComing(actual interface{}, expected ...interface{}) string {
 
 完整代码在[这里](summer/summer_test.go)
 
-## TODO: WebUI Code Gen
+## 自动生成测试代码
+
+在定义好了测试流程与内容后，可以利用 Web UI 的代码生成功能，自动生成代码。
+
+点击 Web UI 右上角的 ![compose button](compose-button.png) 按钮。
+
+![code gen](code-gen.png)
+
+在页面的左边，填写测试流程。页面的右边，就会自动生成测试代码的框架。
+
+> 注意：左边使用 **tab** 进行缩进
 
 ## TODO: Reset
