@@ -16,7 +16,7 @@ GoConvey 的特性有：
 1. 大型回归测试套件
 1. 显示覆盖率（需要 go 1.2 及以上）
 1. 已读并作色的终端输出
-1. 测试代码生成（TODO: 重点）
+1. 测试代码生成
 1. Web UI 可以利用浏览器的通知机制
 
 ## 安装
@@ -44,11 +44,11 @@ import (
 func TestSpec(t *testing.T) {
     // 只有顶层的 Convey 需要传递 t
     Convey("Given some integer with a starting value", t, func() {
-        x := 1
+        x := 0
         Convey("When the integer is incremented", func() {
             x++
             Convey("The value should be greater by one", func() {
-                So(x, ShouldEqual, 2)
+                So(x, ShouldEqual, 1)
             })
         })
     })
@@ -180,4 +180,4 @@ func ShouldSummerBeComing(actual interface{}, expected ...interface{}) string {
 
 > 注意：左边使用 **tab** 进行缩进
 
-## TODO: Reset
+## Reset 函数 TODO:
