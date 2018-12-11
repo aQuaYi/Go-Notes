@@ -79,7 +79,7 @@ var Marshal = json.Marshal
 
 ### 为环境变量打桩
 
-
+<example/gostub_env_test.go> 中的测试函数，显示了给系统变量打桩的方式。
 
 ### 组合打桩
 
