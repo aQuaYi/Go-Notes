@@ -18,3 +18,14 @@ func TestSpec(t *testing.T) {
 		})
 	})
 }
+
+func TestSingleScope(t *testing.T) {
+	output := ""
+
+	Convey("hi", t, func() {
+		output += "done"
+		So(output, ShouldEqual, "adone")
+	})
+
+	// expectEqual(t, "done", output)
+}

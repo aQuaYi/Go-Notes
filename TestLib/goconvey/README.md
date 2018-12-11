@@ -196,4 +196,13 @@ func Reset(action func())
 
 一般用来注册清理函数，**因为每次与 Reset 处于相同作用域的 Convey 执行完毕后， Reset 都会被调用一次**。
 
-##
+## 总结
+
+<https://github.com/smartystreets/goconvey/blob/master/convey/isolated_execution_test.go> 中的代码真的值得好好研究一番。会让你正确理解 GoConvey 的运行方式，及其强大之处。
+
+总结下来，就是
+
+1. 同级的 Convey 就像替换选项，每次只会执行一个。
+1. Reset 就像 defer，同级的代码执行完毕后，就会执行一次 Reset
+1. 每个 Convey 执行完毕后，都会继续执行同级的非 Convey 代码
+1. 每个叶子 Convey 执行的时候，从 root Convey 开始，它的每一个父 Convey，都会被执行。换句话说， 父 Convey 的执行次数与其叶子 Convey 的个数相同。
