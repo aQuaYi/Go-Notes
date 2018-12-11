@@ -40,6 +40,7 @@ func TestStubSettedEnv(t *testing.T) {
 			})
 		})
 	})
+
 }
 
 func TestStubUnsettedEnv(t *testing.T) {
