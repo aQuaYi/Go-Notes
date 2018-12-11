@@ -5,26 +5,61 @@ import (
 	"testing"
 
 	"github.com/prashantv/gostub"
-	"github.com/stretchr/testify/assert"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
-func TestStubEnv(t *testing.T) {
-	ast := assert.New(t)
+func TestStubSettedEnv(t *testing.T) {
 	stubs := gostub.New()
 
-	os.Setenv("SETTED_ENV", "SE")
-	os.Unsetenv("NONE")
+	Convey("设置环境变量 SSE", t, func() {
+		os.Setenv("SSE", "SSE")
+		Convey("如果，没有对其打桩的话", func() {
+			Convey("其中的变量值，应该是原先的值", func() {
+				So(os.Getenv("SSE"), ShouldEqual, "SSE")
+			})
+		})
+		Convey("如果，对其打桩的话", func() {
+			Convey("其中的变量值，应该是 Stub 的值", func() {
+				stubs.SetEnv("SSE", "SSE Stubed")
+				defer stubs.Reset()
+				So(os.Getenv("SSE"), ShouldEqual, "SSE Stubed")
+			})
+		})
+		Convey("如果，打桩成 unset 的话", func() {
+			Convey("应该查询不到这个变量的值", func() {
+				stubs.UnsetEnv("SSE")
+				defer stubs.Reset()
+				_, ok := os.LookupEnv("SSE")
+				So(ok, ShouldBeFalse)
+			})
+		})
+	})
+}
 
-	stubs.SetEnv("NONE", "STUB")
-	stubs.UnsetEnv("SETTED_ENV")
+func TestStubUnsettedEnv(t *testing.T) {
+	stubs := gostub.New()
 
-	ast.Equal("STUB", os.Getenv("NONE"), "没有把 NONE 变量打桩成 STUB")
-	ast.Equal("", os.Getenv("SETTED_ENV"), "没有把 SETTED_ENV 打桩成 空")
-
-	stubs.Reset()
-
-	_, ok := os.LookupEnv("NONE")
-	ast.False(ok, "NONE should be unset")
-
-	ast.Equal("SE", os.Getenv("SETTED_ENV"), "SETTED_ENV 没有被还原成原先的值")
+	Convey("unset 环境变量 USE", t, func() {
+		os.Unsetenv("USE")
+		Convey("如果，没有对其打桩的话", func() {
+			Convey("其中的变量值，应该是原先的值", func() {
+				So(os.Getenv("SSE"), ShouldEqual, "SSE")
+			})
+		})
+		Convey("如果，对其打桩的话", func() {
+			Convey("其中的变量值，应该是 Stub 的值", func() {
+				stubs.SetEnv("SSE", "SSE Stubed")
+				defer stubs.Reset()
+				So(os.Getenv("SSE"), ShouldEqual, "SSE Stubed")
+			})
+		})
+		Convey("如果，打桩成 unset 的话", func() {
+			Convey("应该查询不到这个变量的值", func() {
+				stubs.UnsetEnv("SSE")
+				defer stubs.Reset()
+				_, ok := os.LookupEnv("SSE")
+				So(ok, ShouldBeFalse)
+			})
+		})
+	})
 }
