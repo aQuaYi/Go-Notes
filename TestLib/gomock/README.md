@@ -8,20 +8,107 @@ GoMock 是由 Go 官方开发维护的测试框架，实现了较为完整的基
 
 > 注意： 以下命令需要你的 $GOPATH 应该只指定了一个目录
 
-在命令行运行以下命令安装
+ 一旦安装完成了 Go 语言，就可以可以运行以下命令安装 `gomock` 库和 `mockgen` 工具了：
 
 ```shell
-$ go get github.com/golang/mock/gomock
-$ cd $GOPATH/src/github.com/golang/mock/mockgen
-$ go build
-$ mv mockgen $GOPATH/bin
-$ cd ~
-$ mockgen
-mockgen has two modes of operation: source and reflect.
-...
+go get github.com/golang/mock/gomock
+go install github.com/golang/mock/mockgen
 ```
 
-## 测试Demo
+## 文档
+
+安装完成后，使用 `go doc` 命令查看 `gomock` 的文档。
+
+```shell
+go doc github.com/golang/mock/gomock
+```
+
+或者查看这个文档的在线版本 <https://godoc.org/github.com/golang/mock/gomock>。
+
+## 运行 mockgen
+
+`mockgen` 可以自动生成代码，其有两种操作：源码与反射。具体的使用方式与区别，可以直接运行 `mockgen` 查看
+
+### mockgen 选项说明
+
+-aux_files string
+
+```string
+source 模式专用
+<https://github.com/golang/mock/tree/master/mockgen/internal/tests/aux_imports_embedded_interface> 中讨论了需要这个参数的原因和用法
+```
+
+-build_flags string
+
+```string
+reflect 模式专用
+为 `go build` 准备的额外 flag。即，传递给build工具的参数。
+```
+
+-debug_parser
+
+```string
+TODO: 弄清楚这个
+```
+
+-destination string
+
+```string
+指定输出文件的位置。未指定的话，输出到命令行。
+```
+
+-exec_only string
+
+```string
+反射模式专用，如果设置的话，会执行这个反射程序。
+```
+
+-imports string
+
+```string
+source 模式专用，利用 “逗号分隔” 的 “name=path” 对，来阐明需要引入的内容。
+```
+
+-mock_names string
+
+```string
+通常，默认 `Interface` 被 Mock 后的名称是 `MockInterface`。但是，可以通过 `-mock_names` 选项，和 “逗号分隔” 的 “interfaceName=mockName” 对的形式来修改默认名称。
+```
+
+-package string
+
+```string
+指定生成代码的 package name。默认是使用输入代码的 package name，再加上 `mock_` 前缀完成的。
+```
+
+-prog_only
+
+```string
+reflect 模式专用
+只生成反射程序，输出到标准输出，然后退出。
+```
+
+-self_package string
+
+```string
+The full package import path for the generated code. The purpose of this flag is to prevent import cycles in the generated code by trying to include its own package. This can happen if the mock's package is set to one of its inputs (usually the main one) and the output is stdio so mockgen cannot detect the final output package. Setting this flag will then tell mockgen which import to exclude.
+TODO:
+```
+
+-source string
+
+```string
+source 模式专用
+输入 Go 代码文件，打开 source 模式。
+```
+
+-write_package_comment bool
+
+```string
+设置为 true 时，生成代码时，会带上 `godoc` 用的上的评论。默认就是 true。
+```
+
+## 测试 Demo
 
 编写测试用例有一些基本原则，我们一起回顾一下：
 
