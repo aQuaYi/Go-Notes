@@ -5,10 +5,7 @@ type Calculator struct {
 	math Math
 }
 
-func NewCalculator(m Math) *Calculator {
-
-}
-
-func (c *Calculator) add(a, b int) int {
+// Add return sum of a and b
+func (c *Calculator) Add(a, b int) int {
 	return c.math.Add(a, b)
 }
