@@ -9,3 +9,8 @@ type Calculator struct {
 func (c *Calculator) Add(a, b int) int {
 	return c.math.Add(a, b)
 }
+
+// Sub return
+func (c *Calculator) Sub(a []int, b *int) int {
+	return c.math.Sub(a, b)
+}

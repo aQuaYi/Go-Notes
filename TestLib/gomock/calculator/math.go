@@ -5,5 +5,5 @@ package calculator
 // Math interface define add and sub operation
 type Math interface {
 	Add(int, int) int
-	Sub(int, int) int
+	Sub([]int, *int) int
 }

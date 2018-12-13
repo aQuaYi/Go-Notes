@@ -59,3 +59,38 @@ func Test_Calculator_Add(t *testing.T) {
 	})
 
 }
+
+func Test_Calculator_Sub(t *testing.T) {
+
+	Convey("创建一个 *Calculator", t, FailureContinues, func() {
+		ctrl := gomock.NewController(t)
+		defer ctrl.Finish()
+
+		mockMath := NewMockMath(ctrl)
+		c := &Calculator{
+			math: mockMath,
+		}
+
+		Convey("如果，中途修改参数的值", func() {
+			A := []int{11}
+			b := 5
+			mockMath.EXPECT().
+				Sub(A, &b).
+				SetArg(0, []int{21}).
+				SetArg(1, 10).
+				DoAndReturn(func(xs []int, y *int) int {
+					res := xs[0] - *y
+					Printf("Sub(%v, %d) = %d", xs, *y, res)
+					return res
+				})
+			Convey("那么，计算结果会按照新的参数运行", func() {
+				So(A, ShouldResemble, []int{11})
+				So(b, ShouldEqual, 5)
+				So(c.Sub(A, &b), ShouldEqual, 11)
+				So(A, ShouldResemble, []int{21})
+				So(b, ShouldEqual, 10)
+			})
+		})
+
+	})
+}

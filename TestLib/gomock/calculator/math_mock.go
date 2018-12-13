@@ -45,7 +45,7 @@ func (mr *MockMathMockRecorder) Add(arg0, arg1 interface{}) *gomock.Call {
 }
 
 // Sub mocks base method
-func (m *MockMath) Sub(arg0, arg1 int) int {
+func (m *MockMath) Sub(arg0 []int, arg1 *int) int {
 	ret := m.ctrl.Call(m, "Sub", arg0, arg1)
 	ret0, _ := ret[0].(int)
 	return ret0
