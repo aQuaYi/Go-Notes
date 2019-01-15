@@ -5,18 +5,14 @@ import (
 	"sync"
 )
 
-// 一个 goroutine 只能输出 "ABCD..."
-// 一个 goroutine 只能输出 "1234..."
+// 一个 goroutine 只能输出 "ABCDEFGHI"
+// 一个 goroutine 只能输出 "123456789"
 // 最后输出的结果是 "A1B2C3D4E5F6G7H8I9"
 
 func main() {
 	var number sync.WaitGroup
-	number.Add(1)
 	var letter sync.WaitGroup
 	letter.Add(1)
-
-	var all sync.WaitGroup
-	all.Add(2)
 
 	// print numbers
 	go func() {
@@ -26,21 +22,15 @@ func main() {
 			number.Done()
 			letter.Add(1)
 		}
-		all.Done()
 	}()
 
 	// print letters
-	go func() {
-		for i := 'A'; i < 'A'+9; i++ {
-			number.Wait()
-			fmt.Print(string(byte(i)))
-			letter.Done()
-			number.Add(1)
-		}
-		all.Done()
-	}()
+	for i := 'A'; i < 'A'+9; i++ {
+		number.Wait()
+		fmt.Print(string(byte(i)))
+		letter.Done()
+		number.Add(1)
+	}
 
-	number.Done()
-
-	all.Wait()
+	number.Wait()
 }
