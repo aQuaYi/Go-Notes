@@ -24,6 +24,7 @@ func main() {
 			ya, yb := olda*p-olda, oldb*p-oldb
 			fee := yb * ratio
 			a, b = olda+ya+fee, oldb+yb-fee
+			a += b
 		}
 
 		fmt.Printf("%10.2f, %10.2f, %10.5f, \n", a, b, a/(a+b))
