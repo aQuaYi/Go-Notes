@@ -8,10 +8,10 @@ import (
 func main() {
 	start := time.Now()
 	<-or(
-		sig(2*time.Hour),
+		sig(10*time.Second),
 		sig(1*time.Second),
-		sig(2*time.Second),
 		sig(1*time.Minute),
+		sig(2*time.Hour),
 	)
 	fmt.Printf("done after %v\n", time.Since(start))
 }
@@ -25,34 +25,22 @@ func sig(after time.Duration) <-chan interface{} {
 	return c
 }
 
-// if len(channels) == 0, deadlock possiblely
-func or(channels ...<-chan interface{}) <-chan interface{} {
-	switch len(channels) {
-	case 0:
-		return nil
-	case 1:
-		return channels[0]
+// done 用于关闭 or goroutine
+// channels 中的任意一个接收到信号后，都会通过 orDone 的关闭来转发
+func or(done <-chan interface{}, channels ...<-chan interface{}) <-chan interface{} {
+	if len(channels) == 0 {
+		return done
 	}
-
+	//
 	orDone := make(chan interface{})
 	go func() {
 		defer close(orDone)
-
-		switch len(channels) {
-		case 2:
-			select {
-			case <-channels[0]:
-			case <-channels[1]:
-			}
-		default:
-			select {
-			case <-channels[0]:
-			case <-channels[1]:
-			case <-channels[2]:
-			case <-or(append(channels[3:], orDone)...):
-			}
+		select {
+		case <-done:
+		case <-channels[0]:
+		case <-or(orDone, channels[1:]...):
 		}
 	}()
-
+	//
 	return orDone
 }
