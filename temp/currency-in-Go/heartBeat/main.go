@@ -28,7 +28,7 @@ func main() {
 			}
 			log.Printf("result: %v\n", r.Second())
 		case <-time.After(timeout):
-			fmt.Println("timeout")
+			fmt.Println("worker goroutine is not healthy!")
 			return
 		}
 	}
