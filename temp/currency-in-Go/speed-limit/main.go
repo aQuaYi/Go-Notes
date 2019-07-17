@@ -48,7 +48,7 @@ func main() {
 
 func open() *API {
 	return &API{
-		rateLimiter: rate.NewLimiter(rate.Limit(1), 1),
+		rateLimiter: rate.NewLimiter(rate.Limit(1), 3),
 	}
 }
 
