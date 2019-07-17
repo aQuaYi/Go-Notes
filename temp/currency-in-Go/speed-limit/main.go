@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 	"sync"
+
+	"golang.org/x/time/rate"
 )
 
 func main() {
@@ -21,7 +23,11 @@ func main() {
 	for i := 0; i < 10; i++ {
 		go func(id int) {
 			defer wg.Done()
-			api.readFile(context.Background())
+			err := api.readFile(context.Background())
+			if err != nil {
+				log.Printf("%d cannot read file: %s", id, err)
+			}
+
 			log.Printf("%d read file", id)
 		}(i)
 	}
@@ -29,7 +35,10 @@ func main() {
 	for i := 10; i < 20; i++ {
 		go func(id int) {
 			defer wg.Done()
-			api.resolveAddress(context.Background())
+			err := api.resolveAddress(context.Background())
+			if err != nil {
+				log.Printf("%d cannot resolve address: %s", id, err)
+			}
 			log.Printf("%d resolve address", id)
 		}(i)
 	}
@@ -38,18 +47,28 @@ func main() {
 }
 
 func open() *API {
-	return &API{}
+	return &API{
+		rateLimiter: rate.NewLimiter(rate.Limit(1), 1),
+	}
 }
 
 // API is Application Programming Interface
-type API struct{}
+type API struct {
+	rateLimiter *rate.Limiter
+}
 
 func (a *API) readFile(ctx context.Context) error {
+	if err := a.rateLimiter.Wait(ctx); err != nil {
+		return err
+	}
 	// do something
 	return nil
 }
 
 func (a *API) resolveAddress(ctx context.Context) error {
+	if err := a.rateLimiter.Wait(ctx); err != nil {
+		return err
+	}
 	// do something
 	return nil
 }
