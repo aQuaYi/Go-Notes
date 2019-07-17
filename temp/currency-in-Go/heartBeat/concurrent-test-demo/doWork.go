@@ -23,8 +23,8 @@ func doWork(
 		defer close(heartbeat)
 		defer close(intStream)
 		// 模拟各种延迟，比如 网络延迟，goroutine执行延迟等
-		x := time.Duration(rand.Intn(2000))
-		time.Sleep(x * time.Millisecond)
+		x := time.Duration(rand.Intn(4) + 1)
+		time.Sleep(x * pulseInterval)
 		//
 		pulse := time.Tick(pulseInterval)
 	numLoop:
