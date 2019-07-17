@@ -9,14 +9,14 @@ import (
 
 func Test_doWork_unstable(t *testing.T) {
 	ast := assert.New(t)
-
+	//
 	t.Log("由于各种延迟，这个测试可能成功也可能失败")
 	done := make(chan interface{})
 	defer close(done)
-
+	//
 	ints := []int{0, 1, 2, 3, 4, 5}
 	_, results := doWork(done, ints...)
-
+	//
 	for i, expected := range ints {
 		select {
 		case actual := <-results:
@@ -29,15 +29,15 @@ func Test_doWork_unstable(t *testing.T) {
 
 func Test_doWork_stable(t *testing.T) {
 	ast := assert.New(t)
-
+	//
 	done := make(chan interface{})
 	defer close(done)
-
+	//
 	ints := []int{0, 1, 2, 3, 4, 5}
 	heartbeat, results := doWork(done, ints...)
-
+	//
 	<-heartbeat // 利用 heart beat 做一次同步，避免了由于延迟带来的测试失败。
-
+	//
 	for i, expected := range ints {
 		select {
 		case actual := <-results:
