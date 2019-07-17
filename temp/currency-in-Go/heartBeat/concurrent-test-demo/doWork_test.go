@@ -17,7 +17,7 @@ func Test_doWork(t *testing.T) {
 	timeout := 2 * time.Second
 	heartbeat, results := doWork(done, timeout/2, ints...)
 	//
-	<-heartbeat
+	<-heartbeat // NOTICE: join point
 	//
 	i := 0
 	for {
