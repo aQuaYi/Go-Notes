@@ -6,7 +6,7 @@ import (
 )
 
 // intStream: a buffered channel that we can send work requests on.
-var intStream chan int
+var intStream = make(chan int, maxQueue)
 
 // Worker represents the worker that executes the job
 type Worker struct {
@@ -31,11 +31,10 @@ func (w Worker) start() {
 			w.pool <- w.intChan
 			select {
 			case num := <-w.intChan:
-				fmt.Printf("[ID:%d] receive %d, ", w.ID, num)
 				if isPrime(num) {
-					fmt.Println("It's prime")
+					fmt.Printf("[ID:%d] receive %d, It's prime.\n", w.ID, num)
 				} else {
-					fmt.Println("It's NOT prime")
+					fmt.Printf("[ID:%d] receive %d, It's NOT prime.\n", w.ID, num)
 				}
 			case <-w.quit:
 				// we have received a signal to stop
@@ -54,7 +53,7 @@ func (w Worker) Stop() {
 
 func isPrime(n int) bool {
 	root := int(math.Sqrt(float64(n)))
-	for i := 0; i <= root; i++ {
+	for i := 2; i <= root; i++ {
 		if n%i == 0 {
 			return false
 		}
